@@ -25,6 +25,11 @@ public class RepetitiveEvent extends Event {
      * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
      * </UL>
      */
+    public RepetitiveEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {
+        super(title, start, duration);
+        this.frequency=frequency;
+    }
+
     public RepetitiveEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, ArrayList<LocalDate> exception) {
         super(title, start, duration);
         this.frequency=frequency;
