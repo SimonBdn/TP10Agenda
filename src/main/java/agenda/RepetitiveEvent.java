@@ -59,7 +59,8 @@ public class RepetitiveEvent extends Event {
 
 @Override
     public boolean isInDay(LocalDate aDay){
-        if(aDay.getDayOfYear()== this.getStart().getDayOfYear()) {
+        if(aDay.getDayOfYear()== this.getStart().getDayOfYear()&&
+                aDay.getDayOfYear()==this.getStart().plus(this.getDuration()).getDayOfYear());) {
             return true;
         }
         else {return false;}
