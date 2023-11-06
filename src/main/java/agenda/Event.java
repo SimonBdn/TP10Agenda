@@ -40,7 +40,7 @@ public class Event {
      * @return true if the event occurs on that day, false otherwise
      */
     public boolean isInDay(LocalDate aDay) {
-        return(aDay.getDayOfYear()==this.getStart().getDayOfYear() ||
+        return(aDay.getDayOfYear()==this.getStart().getDayOfYear() &&
                 aDay.getDayOfYear()==this.getStart().plus(this.getDuration()).getDayOfYear());
         
         // On va essayer.
