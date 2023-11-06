@@ -62,6 +62,7 @@ public class RepetitiveEvent extends Event {
         if(aDay.getDayOfYear()== this.getStart().getDayOfYear()) {
             return true;
         }
+        else {return false;}
 }
 
 }
