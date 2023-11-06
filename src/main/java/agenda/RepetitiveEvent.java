@@ -28,13 +28,9 @@ public class RepetitiveEvent extends Event {
     public RepetitiveEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {
         super(title, start, duration);
         this.frequency=frequency;
-    }
-
-    public RepetitiveEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, ArrayList<LocalDate> exception) {
-        super(title, start, duration);
-        this.frequency=frequency;
         this.exception= new ArrayList<LocalDate>();
     }
+
 
     /**
      * Adds an exception to the occurrence of this repetitive event
@@ -46,7 +42,7 @@ public class RepetitiveEvent extends Event {
             throw new IllegalArgumentException("Date déjà présente");
         }
         else{
-        exception.add(date);}
+        this.exception.add(date);}
     }
 
     /**
@@ -58,8 +54,12 @@ public class RepetitiveEvent extends Event {
     }
 
 @Override
-    public boolean isInDay(LocalDate aDay){
+public boolean isInDay(LocalDate aDay){
+    if(exception.contains(aDay)){
+        return false;
+    }
 
-}
+
+
 
 }
