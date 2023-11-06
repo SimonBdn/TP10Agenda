@@ -41,6 +41,8 @@ public class Event {
      */
     public boolean isInDay(LocalDate aDay) {
         return(aDay.getDayOfYear()==this.getStart().getDayOfYear() || aDay.getDayOfYear()==this.getStart().plus(this.getDuration()).getDayOfYear());
+        
+        // TODO : implémenter cette méthode
     }
    
     /**
