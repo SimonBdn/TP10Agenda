@@ -43,7 +43,7 @@ public class Event {
         return(aDay.getDayOfYear()==this.getStart().getDayOfYear() ||
                 aDay.getDayOfYear()==this.getStart().plus(this.getDuration()).getDayOfYear());
         
-        // TODO : implémenter cette méthode
+        // On va essayer.
     }
    
     /**
