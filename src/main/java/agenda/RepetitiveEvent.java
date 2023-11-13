@@ -1,5 +1,6 @@
 package agenda;
 
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
@@ -58,7 +59,16 @@ public boolean isInDay(LocalDate aDay){
     if(exception.contains(aDay)){
         return false;
     }
-
+    LocalDateTime verifDate = this.getStart();
+    int cmpt = 0;
+    while(aDay.plus(cmpt, frequency).compareTo(ChronoLocalDate.from(this.getStart()))>=0){
+        if (super.isInDay(aDay.minus(cmpt, frequency)) && !exception.contains(aDay.minus(cmpt, frequency))) {
+            return true;
+        }
+        cmpt++;
+    }
+    return  false;
+}
 
 
 
