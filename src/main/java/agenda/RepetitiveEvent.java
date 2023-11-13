@@ -70,6 +70,12 @@ public boolean isInDay(LocalDate aDay){
     return  false;
 }
 
-
+@Override
+    public String toString() {
+        return super.toString() +
+                "frequency=" + frequency +
+                ", exceptionLocalDate=" + exception +
+                '}';
+    }
 
 }

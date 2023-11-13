@@ -30,8 +30,12 @@ public class FixedTerminationEvent extends RepetitiveEvent {
     public FixedTerminationEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency,
                                  LocalDate terminationInclusive) {
          super(title, start, duration, frequency);
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.terminationInclusive = terminationInclusive;
+        int cmpt = 0;
+        while (this.getStart().plus(cmpt, frequency).isBefore(terminationInclusive.atStartOfDay())) {
+            cmpt++;
+        }
+        this.numberOfOccurrences = cmpt;
 
     }
 
@@ -51,14 +55,18 @@ public class FixedTerminationEvent extends RepetitiveEvent {
      */
     public FixedTerminationEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, long numberOfOccurrences) {
         super(title, start, duration, frequency);
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.numberOfOccurrences = numberOfOccurrences;
+        int cmpt = 0;
+        this.terminationInclusive = LocalDate.from(this.getStart().plus(numberOfOccurrences -1, frequency));
+
     }
 
     /**
      *
      * @return the termination date of this repetitive event
      */
+
+
     public LocalDate getTerminationDate() {
         return this.terminationInclusive;
     }
@@ -66,5 +74,11 @@ public class FixedTerminationEvent extends RepetitiveEvent {
     public long getNumberOfOccurrences() {
         return this.numberOfOccurrences;
     }
-        
+@Override
+    public String toString() {
+        return super.toString() +
+                "terminationInclusive=" + terminationInclusive +
+                ", numberOfOccurrences=" + numberOfOccurrences +
+                '}';
+    }
 }
